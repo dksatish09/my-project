@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABD Techno Pvt Ltd</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #fff8dc; /* light yellow */
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: white;
+      border-bottom: 2px solid #eee;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #004080;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .container {
+      display: flex;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #e6f2ff; /* light blue */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      font-size: 16px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    }
+
+    .menu-item:hover {
+      background: #cce5ff;
+    }
+
+    .menu-item span {
+      background: #007bff;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    height: auto;          /* ✅ ensures card grows with text */
+	}
+
+    .card h4 {
+      margin-top: 0;
+      color: #003366;
+      font-size: 16px;
+    }
+	.card p {
+    margin: 8px 0 0;       /* some spacing below heading */
+    font-size: 14px;       /* consistent with your design */
+    line-height: 1.5;      /* makes multi-line text readable */
+    color: #333;           /* darker text */
+    white-space: normal;   /* ✅ allow wrapping to next line */
+    overflow: visible;     /* ✅ show all content */
+	}
+
+	.small-btn{
+  padding:7px 12px;
+  margin-left:6px;
+  border-radius:8px;
+  border:1px solid #007bff;
+  background:#007bff;
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+.small-btn:disabled{
+  opacity:0.45;
+  cursor:not-allowed;
+}
+
+    footer {
+  text-align: center;
+  padding: 3px;
+  background: #003366;   /* dark blue for contrast */
+  color: white;
+  position: fixed;       /* ✅ sticks to bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="https://via.placeholder.com/60x50.png?text=Logo" alt="ABD Logo">
+    <div>
+      <h1>ABD Techno Pvt Ltd</h1>
+      <p>Manufacturing of Windmill Spares, Hydraulic & TAFE parts, Automobile Components</p>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Company Profile</h3>
+      <div class="menu-item" onclick="showContent('profile')"><span>1</span> Profile</div>
+      <div class="menu-item" onclick="showContent('business')"><span>2</span> Business</div>
+      <div class="menu-item" onclick="showContent('community')"><span>3</span> Community</div>
+      <div class="menu-item" onclick="showContent('about')"><span>4</span> About Us</div>
+      <div class="menu-item" onclick="showContent('careers')"><span>5</span> Careers</div>
+      <div class="menu-item" onclick="showContent('company')"><span>6</span> Company Details</div>
+    </div>
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="main">
+  <!-- Home button -->
+  <button onclick="goHome()" 
+    style="padding:8px 15px; 
+           margin-bottom:10px; 
+           background:#007bff; 
+           color:white; 
+           border:none; 
+           border-radius:6px; 
+           cursor:pointer;">
+    Home
+  </button>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search articles (e.g., windmill, hydraulic, 1987, 24x7)...">
+  </div>
+  <div id="content">
+
+
+      <div id="content">
+        <!-- Default Articles -->
+        <div class="cards">
+          <div class="card">
+            <h4>Founding Story (1987)</h4>
+            <p>Founded by James Ant on 9 Jun 1987 with 10 machines and 10 labours. Today operating with 50 machines and 100 employees running 24×7.</p>
+          </div>
+          <div class="card">
+            <h4>24×7 Multi-Machinery Operations</h4>
+            <p>From a modest shopfloor to a facility with diversified machinery — ensuring faster production, efficiency, and consistency.</p>
+          </div>
+          <div class="card">
+            <h4>Windmill Spare Parts</h4>
+            <p>Precision components for wind turbines: hubs, shafts, wear parts built for reliability in harsh conditions.</p>
+          </div>
+          <div class="card">
+            <h4>Hydraulic Systems & Parts</h4>
+            <p>Cylinders, valves, manifolds, and assemblies with tight tolerances, tested for durability.</p>
+          </div>
+          <div class="card">
+            <h4>TAFE Parts</h4>
+            <p>OEM-compatible parts for TAFE and farm equipment, designed for durability and field performance.</p>
+          </div>
+          <div class="card">
+            <h4>Automobile Components</h4>
+            <p>Machined components for automotive applications, from batch to small-series production.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+ <!-- JavaScript should be fully enclosed -->
+<script>
+  function showContent(section) {
+    let content = document.getElementById("content");
+
+    if (section === 'profile') {
+      content.innerHTML = `
+        <div class="card">
+          <h4>Our Partners</h4>
+
+          <div id="partnerStepper">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div id="partnerCounter" style="font-weight:700;color:#004080;"></div>
+              <div>
+                <button class="small-btn" onclick="prevPartner()">Prev</button>
+                <button class="small-btn" onclick="nextPartner()">Next</button>
+              </div>
+            </div>
+
+            <div id="partnerDisplay" style="margin-top:12px;">
+              <h3 id="partnerNameDisplay" style="margin:0;color:#003366;"></h3>
+              <p id="partnerDescDisplay" style="margin:6px 0 0 0;color:#444;"></p>
+            </div>
+          </div>
+
+          <hr style="margin:12px 0;">
+
+          <p style="margin:6px 0 8px 0;font-weight:600;">All partners (step list):</p>
+          <ol id="partnerListStatic" style="padding-left:18px;margin:0 0 8px 0;">
+            <li>Tafe</li>
+            <li>BTPL</li>
+            <li>Wheels India</li>
+            <li>LMS</li>
+            <li>JS Cast</li>
+            <li>BHIPL</li>
+            <li>DECAAN MOTORS</li>
+            <li>Global Solutions</li>
+            <li>Saratha Rubbers</li>
+          </ol>
+        </div>
+      `;
+
+      if (!window.partnersArray) {
+        window.partnersArray = [
+          { name: 'Tafe',            desc: 'Long-term partner for agricultural & tractor components.' },
+          { name: 'BTPL',            desc: 'Business partner (components & assemblies).' },
+          { name: 'Wheels India',    desc: 'Supplier/partner for wheel & axle components.' },
+          { name: 'LMS',             desc: 'Partner for logistics and material services.' },
+          { name: 'JS Cast',         desc: 'Foundry/casting partner for precision castings.' },
+          { name: 'BHIPL',           desc: 'Industrial parts partner and OEM supplier.' },
+          { name: 'DECAAN MOTORS',   desc: 'Automotive components & assemblies partner.' },
+          { name: 'Global Solutions',desc: 'Global trade/solutions partner.' },
+          { name: 'Saratha Rubbers', desc: 'Supplier for rubber parts and seals.' }
+        ];
+      }
+
+      window.currentPartner = 0;
+      showPartner(0);
+    }
+    else if (section === 'business') {
+      content.innerHTML = `
+        <div class="card"><h4>Business Profile</h4>
+        <p>Ferrous metals manufacturing company specializing in:</p>
+        <ul>
+          <li>Windmill Spare Parts</li>
+          <li>Hydraulic Parts</li>
+          <li>Motor Outer Body</li>
+          <li>Rings</li>
+          <li>Hydraulic Yokes</li>
+          <li>Bushes</li>
+        </ul>
+        </div>
+      `;
+    }
+    else if (section === 'community') {
+      content.innerHTML = `
+        <div class="card"><h4>Community</h4>
+        <p>We support education, skill development, and local employment initiatives.</p></div>
+      `;
+    }
+    else if (section === 'about') {
+      content.innerHTML = `
+        <div class="card"><h4>About Us</h4>
+        <p>Founded by James Ant in 1987 with 10 machines & 10 labours. Today we run 24×7 with 50 machines and 100 employees.</p></div>
+      `;
+    }
+    else if (section === 'careers') {
+      content.innerHTML = `
+        <div class="card"><h4>Careers</h4>
+        <p>We are hiring engineers, machine operators, and skilled workers.</p></div>
+      `;
+    }
+    else if (section === 'company') {
+      content.innerHTML = `
+        <div class="card"><h4>Company Details</h4>
+        <p><strong>Address:</strong> 2/5/53, Nallur Road, Chitmasapalli, Hosur, Krishnagiri (DT)</p>
+        <p><strong>Phone:</strong> 084-2345678</p>
+        <p><strong>GST No:</strong> 3G46FOTFY311</p></div>
+      `;
+    }
+  }
+
+  function goHome() {
+    document.getElementById("content").innerHTML = `
+      <div class="cards">
+        <div class="card"><h4>Founding Story (1987)</h4><p>Founded by James Ant on 9 Jun 1987...</p></div>
+        <div class="card"><h4>24×7 Multi-Machinery Operations</h4><p>From a modest shopfloor...</p></div>
+        <div class="card"><h4>Windmill Spare Parts</h4><p>Precision components for turbines...</p></div>
+        <div class="card"><h4>Hydraulic Systems & Parts</h4><p>Cylinders, valves, manifolds...</p></div>
+        <div class="card"><h4>TAFE Parts</h4><p>OEM-compatible farm equipment parts...</p></div>
+        <div class="card"><h4>Automobile Components</h4><p>Machined components for automotive applications...</p></div>
+      </div>
+    `;
+  }
+
+  function showPartner(index) {
+    const partners = window.partnersArray || [];
+    if (!partners.length) return;
+
+    if (index < 0) index = 0;
+    if (index >= partners.length) index = partners.length - 1;
+
+    window.currentPartner = index;
+
+    document.getElementById('partnerCounter').innerText = `${index + 1} of ${partners.length}`;
+    document.getElementById('partnerNameDisplay').innerText = partners[index].name;
+    document.getElementById('partnerDescDisplay').innerText = partners[index].desc;
+
+    const prevBtn = document.querySelector('button[onclick="prevPartner()"]');
+    const nextBtn = document.querySelector('button[onclick="nextPartner()"]');
+    if (prevBtn) prevBtn.disabled = (index === 0);
+    if (nextBtn) nextBtn.disabled = (index === partners.length - 1);
+  }
+
+  function prevPartner() {
+    showPartner((window.currentPartner || 0) - 1);
+  }
+
+  function nextPartner() {
+    showPartner((window.currentPartner || 0) + 1);
+  }
+</script>
+
+<!-- Footer OUTSIDE script -->
+<footer>
+  © 2025 ABD Techno Pvt Ltd. All rights reserved.
+</footer>
+
