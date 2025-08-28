@@ -1,129 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABD Groups</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: white;
-      color: #333;
-    }
-    header {
-      background: #004080;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    header img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-    }
-    nav {
-      background: #e6f0ff;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #004080;
-      font-weight: bold;
-    }
-    .search-box {
-      margin: 20px auto;
-      text-align: center;
-    }
-    .search-box input {
-      width: 40%;
-      padding: 10px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-    }
-    .section {
-      background: #e6f0ff;
-      margin: 20px auto;
-      width: 80%;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .section h2 {
-      color: #004080;
-    }
-    footer {
-      background: #222;
-      color: #bbb;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ABD Techno Pvt Ltd</title>
+<style>
+  :root{
+    --brand:#004080;
+    --light:#e9f3ff; /* light blue highlight */
+    --text:#1f2937;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:#fff; color:var(--text);
+  }
+
+  /* Header */
+  header{
+    display:flex; align-items:center; gap:14px;
+    padding:14px 18px; border-bottom:1px solid #eef2f7;
+    position:sticky; top:0; background:#fff; z-index:5;
+  }
+  header img.logo{width:56px; height:56px; object-fit:contain}
+  header h1{font-size:20px; margin:0; color:var(--brand)}
+  header small{display:block; color:#6b7280; font-weight:500}
+
+  /* Layout */
+  .wrap{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    gap:18px;
+    max-width:1200px; margin:18px auto; padding:0 14px;
+  }
+  /* Sidebar (stepper) */
+  .sidebar{
+    background:var(--light);
+    border:1px solid #d6e8ff;
+    border-radius:14px; padding:14px; position:sticky; top:80px;
+    counter-reset: step;
+  }
+  .sidebar h3{margin:6px 8px 10px; font-size:14px; color:#0f172a; letter-spacing:.4px;}
+  .steps{display:flex; flex-direction:column; gap:8px}
+  .step-link{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px; border-radius:12px; text-decoration:none; color:#0f172a;
+    background:#fff; border:1px solid #cfe2ff; transition:.15s ease;
+  }
+  .step-link::before{
+    counter-increment: step;
+    content: counter(step);
+    display:inline-grid; place-content:center;
+    width:26px; height:26px; border-radius:999px;
+    background:var(--brand); color:#fff; font-weight:700; font-size:13px;
+  }
+  .step-link:hover{transform:translateX(2px)}
+  .step-link.active{outline:2px solid var(--brand); outline-offset:2px}
+
+  /* Main area */
+  .main{display:flex; flex-direction:column; gap:16px}
+
+  /* Search + Articles */
+  .search-area{
+    background:var(--light); border:1px solid #d6e8ff;
+    border-radius:14px; padding:16px;
+  }
+  .search-bar{display:flex; gap:10px; align-items:center; margin-bottom:12px}
+  .search-bar input{
+    flex:1; padding:12px 14px; border:1px solid #cbd5e1;
+    border-radius:10px; font-size:15px;
+  }
+  .articles{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px}
+  .article{
+    background:#fff; border:1px solid #dbe7ff; border-radius:12px; padding:14px;
+  }
+  .article h4{margin:0 0 6px; color:var(--brand)}
+  .muted{color:#667085; font-size:13px}
+
+  /* Tabs (detail panels) */
+  .panel{
+    background:var(--light); border:1px solid #d6e8ff;
+    border-radius:14px; padding:16px; display:none;
+  }
+  .panel h2{margin-top:0; color:var(--brand)}
+  .panel ul{margin:8px 0 0 18px}
+
+  /* Footer */
+  footer{margin:26px auto 18px; max-width:1200px; padding:0 14px}
+  .card{
+    background:var(--light); border:1px solid #d6e8ff; border-radius:14px; padding:14px;
+  }
+
+  /* Responsive */
+  @media (max-width: 840px){
+    .wrap{grid-template-columns:1fr}
+    .sidebar{position:static}
+  }
+</style>
 </head>
 <body>
-  <header>
-   <img src="logo.jpg" alt="Company Logo">
-    <h1>ABD Groups</h1>
-    <p>Innovating Tomorrow, Today</p>
-  </header>
 
-  <nav>
-    <a href="#profile">Profile</a>
-    <a href="#business">Business</a>
-    <a href="#community">Community</a>
-    <a href="#about">About Us</a>
-    <a href="#careers">Careers</a>
-  </nav>
-
-  <div class="search-box">
-    <input type="text" placeholder="Search articles...">
+<header>
+  <!-- Replace src with your logo path (e.g., /images/abd-logo.png) -->
+  <img class="logo" src="logo.png" alt="ABD Logo" />
+  <div>
+    <h1>ABD Techno Pvt Ltd</h1>
+    <small>Manufacturing windmill spares, hydraulic & TAFE parts, automobile components</small>
   </div>
+</header>
 
-  <div class="section" id="profile">
-    <h2>Company Profile</h2>
-    <p>ABD Groups is a leading manufacturing company specializing in Windmill Spare Parts, Hydraulic Components, TAFE parts, and Automobile components.</p>
+<div class="wrap">
+  <!-- Left "step-by-step" sidebar -->
+  <aside class="sidebar" aria-label="Section navigation">
+    <h3>Company Profile</h3>
+    <nav class="steps">
+      <a class="step-link" href="#profile" data-target="profile">Profile</a>
+      <a class="step-link" href="#business" data-target="business">Business</a>
+      <a class="step-link" href="#community" data-target="community">Community</a>
+      <a class="step-link" href="#about" data-target="about">About Us</a>
+      <a class="step-link" href="#careers" data-target="careers">Careers</a>
+      <a class="step-link" href="#details" data-target="details">Company Details</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Search + Articles (always visible) -->
+    <section class="search-area" aria-label="Articles">
+      <div class="search-bar">
+        <input id="search" type="search" placeholder="Search articles (e.g., windmill, hydraulic, 1994, 24x7)..." />
+      </div>
+      <div id="articles" class="articles">
+        <!-- Articles generated from your info -->
+        <article class="article" data-tags="history founding 1994 james bouvet story">
+          <h4>Founding Story (1994)</h4>
+          <p class="muted">Founded by <strong>James Bouvet</strong> on <strong>9 Jan 1994</strong>. Started with small machines and a 10-member team; steadily scaled with quality-first manufacturing.</p>
+        </article>
+
+        <article class="article" data-tags="capabilities 24x7 machines multi machinery growth">
+          <h4>24×7 Multi-Machinery Operations</h4>
+          <p class="muted">From a modest shopfloor to a facility running <strong>24×7</strong> with diversified machinery—driving faster turnarounds and consistent output.</p>
+        </article>
+
+        <article class="article" data-tags="windmill spare parts renewable energy">
+          <h4>Windmill Spare Parts</h4>
+          <p class="muted">Precision components for wind turbines: hubs, brake assemblies, shafts, and wear parts built for reliability in harsh conditions.</p>
+        </article>
+
+        <article class="article" data-tags="hydraulic parts cylinders valves manifolds">
+          <h4>Hydraulic Systems & Parts</h4>
+          <p class="muted">Cylinders, valves, manifolds, and custom hydraulic sub-assemblies with tight tolerances and rigorous testing.</p>
+        </article>
+
+        <article class="article" data-tags="tafe tractor farm equipment">
+          <h4>TAFE Parts</h4>
+          <p class="muted">OEM-compatible parts for TAFE and farm equipment—focused on durability, fit, and field performance.</p>
+        </article>
+
+        <article class="article" data-tags="automobile components machining">
+          <h4>Automobile Components</h4>
+          <p class="muted">Machined components and assemblies for automotive applications—batch to small-series production.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Detail panels: hidden until clicked -->
+    <section id="profile" class="panel" aria-labelledby="profile">
+      <h2>Company Profile</h2>
+      <p>ABD Techno Pvt Ltd manufactures <strong>windmill spare parts</strong>, <strong>hydraulic parts</strong>, <strong>TAFE parts</strong>, and <strong>automobile components</strong>. We focus on precision machining, quality control, and on-time delivery.</p>
+    </section>
+
+    <section id="business" class="panel" aria-labelledby="business">
+      <h2>Business</h2>
+      <ul>
+        <li>Windmill spare parts (hubs, shafts, brake components, wear parts)</li>
+        <li>Hydraulic components (cylinders, valves, manifolds, fittings)</li>
+        <li>TAFE / agri-machinery parts (OEM-compatible spares)</li>
+        <li>Automobile components (machined & sub-assemblies)</li>
+      </ul>
+      <p class="muted">Quality systems, material traceability, and preventive maintenance support consistent output.</p>
+    </section>
+
+    <section id="community" class="panel" aria-labelledby="community">
+      <h2>Community</h2>
+      <p>We invest in workforce training, safety practices, and energy-efficient processes aligned with sustainable manufacturing.</p>
+    </section>
+
+    <section id="about" class="panel" aria-labelledby="about">
+      <h2>About Us</h2>
+      <p>Founded by <strong>James Bouvet</strong> on <strong>January 9, 1994</strong>, ABD began with small machines and a team of ten. Today, we operate with <strong>multi-machineries</strong> and run <strong>24×7</strong> to meet customer schedules.</p>
+    </section>
+
+    <section id="careers" class="panel" aria-labelledby="careers">
+      <h2>Careers</h2>
+      <p>We welcome machinists, quality engineers, and production associates who thrive in a modern, fast-paced shopfloor.</p>
+    </section>
+
+    <section id="details" class="panel" aria-labelledby="details">
+      <h2>Company Details</h2>
+      <p><strong>Address:</strong> 245/53, Nallur Road, Chitnapalli, Hosur, Krishnagiri (DT), Tamil Nadu</p>
+      <p><strong>Phone:</strong> 084-2345678</p>
+      <p><strong>GST No:</strong> 3G46FOTCY311</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="card">
+    © <span id="yr"></span> ABD Techno Pvt Ltd. All rights reserved.
   </div>
+</footer>
 
-  <div class="section" id="business">
-    <h2>Business</h2>
-    <p>Our company focuses on delivering high-quality products across industries. We specialize in:</p>
-    <ul>
-      <li>Windmill spare parts</li>
-      <li>Hydraulic parts</li>
-      <li>TAFE machinery parts</li>
-      <li>Automobile components</li>
-    </ul>
-  </div>
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-  <div class="section" id="community">
-    <h2>Community & Articles</h2>
-    <p>We are committed to innovation and sustainable practices in manufacturing. Our continuous improvements and workforce training keep us ahead in the industry.</p>
-  </div>
+  // Tabs: show panel only when the sidebar step is clicked
+  const links = document.querySelectorAll('.step-link');
+  const panels = document.querySelectorAll('.panel');
 
-  <div class="section" id="about">
-    <h2>About Us</h2>
-    <p>The company was founded by <strong>James Bouvet</strong> on <strong>January 9, 1994</strong>. 
-    It started with small machines and 10 employees, and now operates with multi-machineries, running 24/7 with a strong workforce.</p>
-  </div>
+  function showPanel(id){
+    panels.forEach(p => p.style.display = 'none');
+    const el = document.getElementById(id);
+    if(el){ el.style.display = 'block'; }
+  }
+  links.forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      links.forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      showPanel(a.dataset.target);
+    });
+  });
 
-  <div class="section" id="careers">
-    <h2>Careers</h2>
-    <p>We are always looking for skilled and passionate individuals to join our growing team. If you’re ready to innovate, ABD Groups is the right place for you.</p>
-  </div>
+  // Nothing selected by default (panels hidden).
+  // Uncomment the next line if you want "Profile" to open on load:
+  // showPanel('profile'); document.querySelector('[data-target="profile"]').classList.add('active');
 
-  <div class="section">
-    <h2>Company Details</h2>
-    <p><strong>Address:</strong> 245/53, Nallur Road, Chitnapalli, Hosur, Krishnagiri (DT)</p>
-    <p><strong>Phone:</strong> 084-2345678</p>
-    <p><strong>GST No:</strong> 3G46FOTCY311</p>
-  </div>
-
-  <footer>
-    <p>© 2025 ABD Groups. All rights reserved.</p>
-  </footer>
+  // Article search (title + content + tags)
+  const search = document.getElementById('search');
+  const cards  = Array.from(document.querySelectorAll('.article'));
+  search.addEventListener('input', () => {
+    const q = search.value.toLowerCase().trim();
+    cards.forEach(card=>{
+      const text = (card.innerText + ' ' + (card.dataset.tags||'')).toLowerCase();
+      card.style.display = text.includes(q) ? '' : 'none';
+    });
+  });
+</script>
 </body>
 </html>
+
 
