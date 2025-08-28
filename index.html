@@ -338,18 +338,47 @@
     }
   }
 
-  function goHome() {
-    document.getElementById("content").innerHTML = `
-      <div class="cards">
-        <div class="card"><h4>Founding Story (1987)</h4><p>Founded by James Ant on 9 Jun 1987...</p></div>
-        <div class="card"><h4>24×7 Multi-Machinery Operations</h4><p>From a modest shopfloor...</p></div>
-        <div class="card"><h4>Windmill Spare Parts</h4><p>Precision components for turbines...</p></div>
-        <div class="card"><h4>Hydraulic Systems & Parts</h4><p>Cylinders, valves, manifolds...</p></div>
-        <div class="card"><h4>TAFE Parts</h4><p>OEM-compatible farm equipment parts...</p></div>
-        <div class="card"><h4>Automobile Components</h4><p>Machined components for automotive applications...</p></div>
+ function goHome() {
+  document.getElementById("content").innerHTML = `
+    <div class="cards">
+      <div class="card">
+        <h4>Founding Story (1987)</h4>
+        <p>Founded by James Ant on 9 Jun 1987 with 10 machines and 10 labours.</p>
+        <p>Today operating with 50 machines and 100 employees running 24×7.</p>
       </div>
-    `;
-  }
+
+      <div class="card">
+        <h4>24×7 Multi-Machinery Operations</h4>
+        <p>From a modest shopfloor to a facility with diversified machinery —</p>
+        <p>ensuring faster production, efficiency, and consistency.</p>
+      </div>
+
+      <div class="card">
+        <h4>Windmill Spare Parts</h4>
+        <p>Precision components for wind turbines: hubs, shafts, wear parts</p>
+        <p>built for reliability in harsh conditions.</p>
+      </div>
+
+      <div class="card">
+        <h4>Hydraulic Systems & Parts</h4>
+        <p>Cylinders, valves, manifolds, and assemblies with tight tolerances,</p>
+        <p>tested for durability.</p>
+      </div>
+
+      <div class="card">
+        <h4>TAFE Parts</h4>
+        <p>OEM-compatible parts for TAFE and farm equipment,</p>
+        <p>designed for durability and field performance.</p>
+      </div>
+
+      <div class="card">
+        <h4>Automobile Components</h4>
+        <p>Machined components for automotive applications,</p>
+        <p>from batch to small-series production.</p>
+      </div>
+    </div>
+  `;
+}
 
   function showPartner(index) {
     const partners = window.partnersArray || [];
@@ -383,4 +412,5 @@
 <footer>
   © 2025 ABD Techno Pvt Ltd. All rights reserved.
 </footer>
+
 
